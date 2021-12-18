@@ -24,6 +24,7 @@ int main(){
   //inseart money now
   printf("Please insert your money.\n");
   scanf("%f", &money);
+  //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
   printf("You inserted: $%f \n", money);
 
   while(option!=6) {
@@ -34,7 +35,8 @@ int main(){
 
     switch(option)
     {
-      case 1: calculateChange(money, option);
+      case 1: money = calculateChange(money, option);
+              printf("%f this is THE MONEY HOW MUCH ", money);
         break;
       case 2: break;
       case 3: break;
@@ -65,15 +67,15 @@ int main(){
 float insert_Money()
 {
     float totalInput = 0;
-    float pennies, nickels, dimes, quarters;
+    int pennies, nickels, dimes, quarters;
     printf("How many pennies are you inserting?\n");
-    scanf("%f", &pennies);
+    scanf("%d", &pennies);
     printf("How many nickels are you inserting? \n");
-    scanf("%f", &nickels);
+    scanf("%d", &nickels);
     printf("How many dimes?\n");
-    scanf("%f", &dimes);
+    scanf("%d", &dimes);
     printf("Quarters?\n");
-    scanf("%f", &quarters);
+    scanf("%d", &quarters);
 
     totalInput = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25;
 
@@ -86,6 +88,7 @@ float insert_Money()
 */
 void display_Selections()
 {
+  printf("\n What would you like to purchase?");
   printf("\n1. Cheetos: $0.50");
   printf("\n2. Lays: $0.75");
   printf("\n3. Oreos: $1.50");
@@ -98,14 +101,17 @@ void display_Selections()
     Function calculates the change from the transaction and returns change to user
     Function will take in 2 params, 1 from selection chosen, another from the amount the user inputs
 */
-float calculateChange(/*moneyUser, and userChoice*/)
+float calculateChange(money, userChoice)
 {
     float change = 0;
-    float cheetos, gummy_Bears = 0.50;
+    float cheetos = 0.50;
+    float gummy_Bears = 0.50;
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
 
+    change = money - cheetos;
+    printf("This is your change! $%f", cheetos);
     //do calcluation for the choices added etc.
 
     return change;
