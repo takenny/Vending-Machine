@@ -7,6 +7,15 @@ float dime = 0.10;
 float nickel = 0.05;
 float penny = 0.01;
 
+//using struct to store items and to display items.
+struct item
+{
+  char name[20];
+  int price;
+};
+//array item to store items in vending machine
+struct item arr_item[10];
+
 float insert_Money(); //unsure if need this method ? yet probably do
 void display_Selections();
 float calculateChange();
@@ -15,6 +24,7 @@ int main(){
   //variables for use
   int option = 0;
   float money = 0;
+  float tmoney = 0; // test purposes
 
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
@@ -35,14 +45,18 @@ int main(){
 
     switch(option)
     {
-      case 1: money = calculateChange(money, option);
-              printf("%f this is THE MONEY HOW MUCH ", money);
+      case 1: tmoney = calculateChange(money, option);
         break;
-      case 2: break;
-      case 3: break;
-      case 4: break;
-      case 5: break;
+      case 2: tmoney = calculateChange(money, option);
+        break;
+      case 3: tmoney = calculateChange(money, option);
+        break;
+      case 4: tmoney = calculateChange(money, option);
+        break;
+      case 5: tmoney = calculateChange(money, option);
+        break;
       case 6: option = 6; //maybe write sojmething like Thanks see below for your change etc
+              //printf("See below for your change, thanks, have a great day!\n");
               break;
 
       default : printf("Please select a valid option\n");
@@ -52,7 +66,7 @@ int main(){
 
    //temporary terminal operator
   }
-
+  printf("\n TMONEY IS $%f", tmoney);
   printf("\nThanks, have a great day!\n");
 
 
@@ -101,7 +115,7 @@ void display_Selections()
     Function calculates the change from the transaction and returns change to user
     Function will take in 2 params, 1 from selection chosen, another from the amount the user inputs
 */
-float calculateChange(money, userChoice)
+float calculateChange(money, option)
 {
     float change = 0;
     float cheetos = 0.50;
@@ -109,9 +123,26 @@ float calculateChange(money, userChoice)
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
+    printf("MONEY IS , %f ", money);
+    printf("userChoice, %f", option);
+    switch(option)
+    {
+      case 1: change = money - cheetos; break;
+      case 2: change = money - lays; break;
+      case 3: change = money - oreos; break;
+      case 4: change = money - gummy_Bears; break;
+      case 5: change = money - ritz_Crackers; break;
 
-    change = money - cheetos;
-    printf("This is your change! $%f", cheetos);
+      default: printf("Please insert more money\n"); break;
+    }
+    if(change > 0)
+    {
+      printf("This is your change! $%f Please collect it below \n", change);
+    }
+    else
+    {
+      printf("Have A Good Day\n");
+    }
     //do calcluation for the choices added etc.
 
     return change;
