@@ -37,7 +37,7 @@ int main(){
   //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
   printf("You inserted: $%f \n", money);
 
-  while(option!=6) {
+  while(option!=6 || money > 0) {
 
     display_Selections();
     printf("Please select an Option\n");
@@ -58,15 +58,18 @@ int main(){
       case 6: option = 6; //maybe write sojmething like Thanks see below for your change etc
               //printf("See below for your change, thanks, have a great day!\n");
               break;
-
       default : printf("Please select a valid option\n");
                 break;
     }
+    if (money==0)
+    {
+        printf("\nYou have no more money in the machine!");
+        option = 6;
+    }
    //temporary terminal operator
   }
+
   printf("\nThanks, have a great day!\n");
-
-
   return 0;
 }
 
@@ -99,7 +102,7 @@ float insert_Money()
 */
 void display_Selections()
 {
-  printf("\n What would you like to purchase?");
+  printf("\nWhat would you like to purchase?");
   printf("\n1. Cheetos: $0.50");
   printf("\n2. Lays: $0.75");
   printf("\n3. Oreos: $1.50");
@@ -122,21 +125,31 @@ float calculateChange(float money, int option)
     float oreos = 1.50;
     switch(option)
     {
-      case 1: change = money - cheetos; break;
-      case 2: change = money - lays; break;
-      case 3: change = money - oreos; break;
-      case 4: change = money - gummy_Bears; break;
-      case 5: change = money - ritz_Crackers; break;
+      case 1:
+      printf("\nYou have selected Cheetos for $0.50.");
+      change = money - cheetos; break;
+      case 2:
+      printf("\nYou have selected Lays for $0.75.");
+      change = money - lays; break;
+      case 3:
+      printf("\nYou have selected Oreos for $1.50.");
+      change = money - oreos; break;
+      case 4:
+      printf("\nYou have selected Gummy Bears for $0.50.");
+      change = money - gummy_Bears; break;
+      case 5:
+      printf("\nYou have selected Ritz Crackers for $1.00.");
+      change = money - ritz_Crackers; break;
 
       default: printf("Please insert more money\n"); break;
     }
-    if(change > 0)
+    if(change >= 0)
     {
-      printf("This is your change! $%f Please collect it below \n", change);
+      printf("\nThanks, dispensing item. This is your change! $%f Please collect it below \n", change);
     }
     else
     {
-      printf("Have A Good Day\n");
+      change = 0;
     }
     //do calcluation for the choices added etc.
 
