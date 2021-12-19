@@ -1,16 +1,11 @@
 Fixed the function fro calcualting change. Now need to fix toher stuff so it works and then
 make executable for the qt installer.
-gcc file.c -o whatevername.exe 
-
-Can work on add item function later after done with part 3
-
-1. maybe make struct to input everything
-
-3. the rest
-4. make pretty.
-
-5. move functions around for makefile?
-6. read me writeup
-
-7. have time then add item function?
-    derek told me to maybe consider multidimensional arrays or array or struct.
+gcc file.c -o whatevername.exe
+1. add item functions
+      derek told me to maybe consider multidimensional arrays or array or struct.
+2. exe
+3. qt Widgets part 3
+4. get change back print out change?
+5. adjust formatting / print statemetns? more pretty.
+6. make file
+7. read me file.
