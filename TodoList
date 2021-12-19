@@ -1,6 +1,7 @@
-Why is it not calculating correctly?
-How come the mooney is not passing into the parameters into the fucntion?
+Fixed the function fro calcualting change. Now need to fix toher stuff so it works and then
+make executable for the qt installer.
 
+Can work on add item function later after done with part 3
 
 1. maybe make struct to input everything
 
@@ -12,4 +13,3 @@ How come the mooney is not passing into the parameters into the fucntion?
 
 7. have time then add item function?
     derek told me to maybe consider multidimensional arrays or array or struct.
-    
