@@ -18,7 +18,7 @@ struct item arr_item[10];
 
 float insert_Money(); //unsure if need this method ? yet probably do
 void display_Selections();
-float calculateChange();
+float calculateChange(float money, int option);
 
 int main(){
   //variables for use
@@ -45,15 +45,15 @@ int main(){
 
     switch(option)
     {
-      case 1: tmoney = calculateChange(money, option);
+      case 1: money = calculateChange(money, option);
         break;
-      case 2: tmoney = calculateChange(money, option);
+      case 2: money = calculateChange(money, option);
         break;
-      case 3: tmoney = calculateChange(money, option);
+      case 3: money = calculateChange(money, option);
         break;
-      case 4: tmoney = calculateChange(money, option);
+      case 4: money = calculateChange(money, option);
         break;
-      case 5: tmoney = calculateChange(money, option);
+      case 5: money = calculateChange(money, option);
         break;
       case 6: option = 6; //maybe write sojmething like Thanks see below for your change etc
               //printf("See below for your change, thanks, have a great day!\n");
@@ -62,11 +62,8 @@ int main(){
       default : printf("Please select a valid option\n");
                 break;
     }
-
-
    //temporary terminal operator
   }
-  printf("\n TMONEY IS $%f", tmoney);
   printf("\nThanks, have a great day!\n");
 
 
@@ -115,7 +112,7 @@ void display_Selections()
     Function calculates the change from the transaction and returns change to user
     Function will take in 2 params, 1 from selection chosen, another from the amount the user inputs
 */
-float calculateChange(money, option)
+float calculateChange(float money, int option)
 {
     float change = 0;
     float cheetos = 0.50;
@@ -123,8 +120,6 @@ float calculateChange(money, option)
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
-    printf("MONEY IS , %f ", money);
-    printf("userChoice, %f", option);
     switch(option)
     {
       case 1: change = money - cheetos; break;
