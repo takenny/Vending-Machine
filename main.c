@@ -24,8 +24,8 @@ int main(){
 
   //inseart money now
   printf("Please insert your money.\n");
-  scanf("%f", &money);
-  //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
+  //scanf("%f", &money);
+  money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
@@ -54,6 +54,7 @@ int main(){
       default : printf("Please select a valid option\n");
                 break;
     }
+
     if (money==0)
     {
         printf("\nYou have no more money in the machine!");
@@ -116,6 +117,7 @@ float calculateChange(float money, int option)
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
+  
     switch(option)
     {
       case 1:
