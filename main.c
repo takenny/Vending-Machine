@@ -1,12 +1,4 @@
 #include <stdio.h>
-
-//might change this idk if store globally is okay
-float userAmount = 0;
-float quarter = 0.25;
-float dime = 0.10;
-float nickel = 0.05;
-float penny = 0.01;
-
 //using struct to store items and to display items.
 struct item
 {
@@ -24,7 +16,6 @@ int main(){
   //variables for use
   int option = 0;
   float money = 0;
-  float tmoney = 0; // test purposes
 
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
@@ -35,9 +26,9 @@ int main(){
   printf("Please insert your money.\n");
   scanf("%f", &money);
   //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
-  printf("You inserted: $%f \n", money);
+  printf("You inserted: $%.2f \n", money);
 
-  while(option!=6 || money > 0) {
+  while(option!=6 && money > 0) {
 
     display_Selections();
     printf("Please select an Option\n");
@@ -55,9 +46,11 @@ int main(){
         break;
       case 5: money = calculateChange(money, option);
         break;
-      case 6: option = 6; //maybe write sojmething like Thanks see below for your change etc
+      case 6:
+        option = 6;
+       //maybe write sojmething like Thanks see below for your change etc
               //printf("See below for your change, thanks, have a great day!\n");
-              break;
+        break;
       default : printf("Please select a valid option\n");
                 break;
     }
@@ -145,7 +138,7 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-      printf("\nThanks, dispensing item. This is your change! $%f Please collect it below \n", change);
+      printf("\nThanks, dispensing item. This is your change! $%.2f Please collect it below \n", change);
     }
     else
     {
