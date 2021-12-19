@@ -1,5 +1,6 @@
 Fixed the function fro calcualting change. Now need to fix toher stuff so it works and then
 make executable for the qt installer.
+gcc file.c -o whatevername.exe 
 
 Can work on add item function later after done with part 3
 

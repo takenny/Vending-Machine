@@ -66,7 +66,7 @@ int main(){
         printf("\nYou have no more money in the machine!");
         option = 6;
     }
-   //temporary terminal operator
+
   }
 
   printf("\nThanks, have a great day!\n");
