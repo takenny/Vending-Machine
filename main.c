@@ -138,7 +138,8 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-      printf("\nThanks, dispensing item. This is your change! $%.2f Please collect it below \n", change);
+      //printf("\n This is your change! $%.2f "); //testing purposes. 
+      printf("\nThanks, dispensing item. Please collect the item below. \n", change);
     }
     else
     {
