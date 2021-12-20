@@ -7,6 +7,8 @@ To Create a Finite State Machine for a Vending Machine Controller that takes Cur
 MacOS
 ```
 Navigate to project directory using Terminal.
+Type "make"
+Type "./Vending"
 
 ```
 Windows
