@@ -34,8 +34,8 @@ int main(){
   //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
   //insert money now
   printf("Please insert your money.\n");
-  scanf("%f", &money);
-  //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING <- ERASE COMEMNT LATER
+  //scanf("%f", &money);
+  money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING <- ERASE COMEMNT LATER
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
