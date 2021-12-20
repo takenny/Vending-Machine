@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 //using struct to store items and to display items.
 struct item
 {
@@ -6,26 +7,34 @@ struct item
   int price;
 };
 //array item to store items in vending machine
-struct item arr_item[10];
+//initiatized 10 first
+struct item arr_Item[10];
 
-float insert_Money(); //unsure if need this method ? yet probably do
+float insert_Money();
 void display_Selections();
 float calculateChange(float money, int option);
+void addOptions();
 
 int main(){
   //variables for use
+  int initial = 0;
   int option = 0;
   float money = 0;
 
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
+  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.");
     //if make purchase, proceed as normal with insert money method
-    //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
-
-  //inseart money now
+  scanf("%d", &initial);
+  if(initial == 2)
+  {
+    addOptions();
+  }
+  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
+  //insert money now
   printf("Please insert your money.\n");
-  //scanf("%f", &money);
-  money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
+  scanf("%f", &money);
+  //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING <- ERASE COMEMNT LATER
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
@@ -60,7 +69,6 @@ int main(){
         printf("\nYou have no more money in the machine!");
         option = 6;
     }
-
   }
 
   printf("\nThanks, have a great day!\n");
@@ -117,7 +125,7 @@ float calculateChange(float money, int option)
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
-  
+
     switch(option)
     {
       case 1:
