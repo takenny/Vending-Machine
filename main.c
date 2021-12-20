@@ -4,11 +4,11 @@
 struct item
 {
   char name[20];
-  int price;
+  float price;
 };
 //array item to store items in vending machine
 //initiatized 10 first
-struct item arr_Item[10];
+struct item my_Items[10];
 
 float insert_Money();
 void display_Selections();
@@ -21,9 +21,10 @@ int main(){
   int option = 0;
   float money = 0;
 
+
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
-  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.");
+  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
     //if make purchase, proceed as normal with insert money method
   scanf("%d", &initial);
   if(initial == 2)
@@ -57,6 +58,7 @@ int main(){
         break;
       case 6:
         option = 6;
+        printf("\nYou chose to cancel selection!");
        //maybe write sojmething like Thanks see below for your change etc
               //printf("See below for your change, thanks, have a great day!\n");
         break;
@@ -64,10 +66,14 @@ int main(){
                 break;
     }
 
-    if (money==0)
+    if (money == 0)
     {
-        printf("\nYou have no more money in the machine!");
+        printf("\nYou have no money in the machine!\n");
         option = 6;
+    }
+    else if (money > 0 && option == 6)
+    {
+      printf("\nPlease take your change! $%.2f.Have a Great Day!\n", money);
     }
   }
 
@@ -148,19 +154,24 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-      printf("\nThanks, dispensing item. This is your change! $%.2f Please collect it below \n", change);
+      printf("\nThanks, dispensing item. Please collect it below. You still have $%.2f. \n", change);
     }
     else
     {
-      change = 0;
+      printf("\nPlease add more money to be able to make this purchase.\n");
+      option = 6;
     }
     //do calcluation for the choices added etc.
 
     return change;
 }
 
+
 void addOptions()
 {
-    /*do this function last. might mess up code in the beginning. */
+
+  printf("\nWhat is the name of the item you want to add?");
+
+  printf("\nHow much is this item?");
 
 }
