@@ -1,29 +1,40 @@
 #include <stdio.h>
+
 //using struct to store items and to display items.
 struct item
 {
   char name[20];
-  int price;
+  float price;
 };
 //array item to store items in vending machine
-struct item arr_item[10];
+//initiatized 10 first
+struct item my_Items[10];
 
-float insert_Money(); //unsure if need this method ? yet probably do
+float insert_Money();
 void display_Selections();
 float calculateChange(float money, int option);
+void addOptions();
 
 int main(){
   //variables for use
+  int initial = 0;
   int option = 0;
   float money = 0;
 
+
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
+  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
     //if make purchase, proceed as normal with insert money method
-    //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
-
-  //inseart money now
+  scanf("%d", &initial);
+  if(initial == 2)
+  {
+    addOptions();
+  }
+  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
+  //insert money now
   printf("Please insert your money.\n");
+<<<<<<< HEAD:VendingMachineC/main.c
 <<<<<<< Updated upstream:VendingMachineC/main.c
   scanf("%f", &money);
   //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
@@ -31,6 +42,10 @@ int main(){
   //scanf("%f", &money);
   money = insert_Money();
 >>>>>>> Stashed changes:main.c
+=======
+  //scanf("%f", &money);
+  money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING <- ERASE COMEMNT LATER
+>>>>>>> Testing-add-items-:main.c
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
@@ -53,18 +68,23 @@ int main(){
         break;
       case 6:
         option = 6;
+        printf("\nYou chose to cancel selection!");
        //maybe write sojmething like Thanks see below for your change etc
               //printf("See below for your change, thanks, have a great day!\n");
         break;
       default : printf("Please select a valid option\n");
                 break;
     }
-    if (money==0)
+
+    if (money == 0)
     {
-        printf("\nYou have no more money in the machine!");
+        printf("\nYou have no money in the machine!\n");
         option = 6;
     }
-
+    else if (money > 0 && option == 6)
+    {
+      printf("\nPlease take your change! $%.2f.Have a Great Day!\n", money);
+    }
   }
 
   printf("\nThanks, have a great day!\n");
@@ -121,6 +141,7 @@ float calculateChange(float money, int option)
     float lays = 0.75;
     float ritz_Crackers = 1.00;
     float oreos = 1.50;
+
     switch(option)
     {
       case 1:
@@ -143,18 +164,24 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
+<<<<<<< HEAD:VendingMachineC/main.c
       //printf("\n This is your change! $%.2f "); //testing purposes. 
       printf("\nThanks, dispensing item. Please collect the item below. \n", change);
+=======
+      printf("\nThanks, dispensing item. Please collect it below. You still have $%.2f. \n", change);
+>>>>>>> Testing-add-items-:main.c
     }
     else
     {
-      change = 0;
+      printf("\nPlease add more money to be able to make this purchase.\n");
+      option = 6;
     }
     //do calcluation for the choices added etc.
 
     return change;
 }
 
+<<<<<<< HEAD:VendingMachineC/main.c
 <<<<<<< Updated upstream:VendingMachineC/main.c
 void addOptions()
 {
@@ -168,5 +195,14 @@ void addOptions()
 
   printf("\nHow much is this item?");
 >>>>>>> Stashed changes:main.c
+=======
+
+void addOptions()
+{
+
+  printf("\nWhat is the name of the item you want to add?");
+
+  printf("\nHow much is this item?");
+>>>>>>> Testing-add-items-:main.c
 
 }
