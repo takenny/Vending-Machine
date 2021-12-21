@@ -24,8 +24,13 @@ int main(){
 
   //inseart money now
   printf("Please insert your money.\n");
+<<<<<<< Updated upstream:VendingMachineC/main.c
   scanf("%f", &money);
   //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
+=======
+  //scanf("%f", &money);
+  money = insert_Money();
+>>>>>>> Stashed changes:main.c
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
@@ -69,7 +74,7 @@ int main(){
 /*
     Function inserts money into machine asking user for choices.
     Then inputs that into the variable for userMoney.
-
+    Returns the total Input or the amount of money inserted for processing
 */
 float insert_Money()
 {
@@ -150,8 +155,18 @@ float calculateChange(float money, int option)
     return change;
 }
 
+<<<<<<< Updated upstream:VendingMachineC/main.c
 void addOptions()
 {
     /*do this function last. might mess up code in the beginning. */
+=======
+/* Function to add options to machine
+*/
+void addOptions()
+{
+  printf("\nWhat is the name of the item you want to add?");
+
+  printf("\nHow much is this item?");
+>>>>>>> Stashed changes:main.c
 
 }
