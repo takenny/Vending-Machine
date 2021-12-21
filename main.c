@@ -34,18 +34,8 @@ int main(){
   //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
   //insert money now
   printf("Please insert your money.\n");
-<<<<<<< HEAD:VendingMachineC/main.c
-<<<<<<< Updated upstream:VendingMachineC/main.c
-  scanf("%f", &money);
-  //money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING
-=======
-  //scanf("%f", &money);
   money = insert_Money();
->>>>>>> Stashed changes:main.c
-=======
-  //scanf("%f", &money);
-  money = insert_Money(); //COMMENTED FOR NOW. SHOULD BE WORKING <- ERASE COMEMNT LATER
->>>>>>> Testing-add-items-:main.c
+
   printf("You inserted: $%.2f \n", money);
 
   while(option!=6 && money > 0) {
@@ -164,12 +154,7 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-<<<<<<< HEAD:VendingMachineC/main.c
-      //printf("\n This is your change! $%.2f "); //testing purposes. 
-      printf("\nThanks, dispensing item. Please collect the item below. \n", change);
-=======
       printf("\nThanks, dispensing item. Please collect it below. You still have $%.2f. \n", change);
->>>>>>> Testing-add-items-:main.c
     }
     else
     {
@@ -181,12 +166,7 @@ float calculateChange(float money, int option)
     return change;
 }
 
-<<<<<<< HEAD:VendingMachineC/main.c
-<<<<<<< Updated upstream:VendingMachineC/main.c
-void addOptions()
-{
     /*do this function last. might mess up code in the beginning. */
-=======
 /* Function to add options to machine
 */
 void addOptions()
@@ -194,15 +174,4 @@ void addOptions()
   printf("\nWhat is the name of the item you want to add?");
 
   printf("\nHow much is this item?");
->>>>>>> Stashed changes:main.c
-=======
-
-void addOptions()
-{
-
-  printf("\nWhat is the name of the item you want to add?");
-
-  printf("\nHow much is this item?");
->>>>>>> Testing-add-items-:main.c
-
 }
