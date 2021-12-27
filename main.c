@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 //using struct to store items and to display items.
 struct item
@@ -14,14 +15,30 @@ float insert_Money();
 void display_Selections();
 float calculateChange(float money, int option);
 void addOptions();
+float commandLineAddMoney(char* currencyType, char* currencyAmount);
 
-int main(){
-  //variables for use
+int main(int argc, char *argv[]){
+  //-s stock
+  //-h help
+  char help[] = "-h", stock[] = "-s", quarters[] = "-q", dimes[] = "-d", nickels[] = "-n", pennies[] = "-p";
+
+  if(strcmp(argv[1], help) == 0)
+  {
+    printf("This is the help menu \n");
+    printf("-s shows what item you want to display");
+  }
+  else if(strcmp(argv[1], stock) == 0)
+  {
+    display_Selections();
+  }
+  else if(strcmp(argv[1], quarters) == 0)
+  {
+    commandLineAddMoney(quarters, argv[2]); //insert money argv 2
+  }
+
   int initial = 0;
   int option = 0;
   float money = 0;
-
-
   printf("Welcome to the Vending Machine!\n\n");
   //print if want to make purchase or add item to the thing
   printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
@@ -68,16 +85,15 @@ int main(){
 
     if (money == 0)
     {
-        printf("\nYou have no money in the machine!\n");
         option = 6;
+        printf("\nYou have no money in the machine!\n");
+        printf("\nThanks, have a great day!\n");
     }
     else if (money > 0 && option == 6)
     {
       printf("\nPlease take your change! $%.2f.Have a Great Day!\n", money);
     }
   }
-
-  printf("\nThanks, have a great day!\n");
   return 0;
 }
 
@@ -174,4 +190,13 @@ void addOptions()
   printf("\nWhat is the name of the item you want to add?");
 
   printf("\nHow much is this item?");
+}
+
+float commandLineAddMoney(char* currencyType, char* currencyAmount)
+{
+  float money = 0;
+  int pennies, nickels, dimes, quarters;
+  money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25;
+
+  return money;
 }
