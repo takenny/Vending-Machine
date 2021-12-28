@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
   }
   else if(strcmp(argv[1], quarters) == 0)
   {
-    commandLineAddMoney(quarters, argv[2]); //insert money argv 2
+    money = commandLineAddMoney("quarters", argv[2]); //insert money argv 2
     display_Selections();
     printf("Please select an Option\n");
     scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
@@ -182,7 +182,23 @@ float commandLineAddMoney(char* currencyType, char* currencyAmount)
 {
   float money = 0;
   int pennies, nickels, dimes, quarters;
-  quarters = *currencyAmount - 48; //sub 0 to get from char to int
+  if(strcmp(currencyType, "quarters") == 0)
+  {
+    quarters = *currencyAmount - 48;//sub 0 to get from char to int
+  }
+  else if(strcmp(currencyType, "nickels") == 0)
+  {
+    nickels = *currencyAmount - 48;
+  }
+  else if(strcmp(currencyType, "dimes") == 0)
+  {
+    dimes = *currencyAmount - 48;
+  }
+  else if(strcmp(currencyType, "pennies") == 0)
+  {
+    pennies = *currencyAmount - 48;
+  }
+
   money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25;
 
   return money;
