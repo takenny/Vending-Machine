@@ -30,7 +30,8 @@ int main(int argc, char *argv[]){
   if(strcmp(argv[1], help) == 0)
   {
     printf("This is the help menu \n");
-    printf("-s shows what item you want to display");
+    printf("-s shows what item you want to display\n");
+    printf("-q indicates quarters and the number after -q indicates how many quarters you inputted\n");
   }
   else if(strcmp(argv[1], stock) == 0)
   {
@@ -40,9 +41,10 @@ int main(int argc, char *argv[]){
   {
     money = commandLineAddMoney("quarters", argv[2]); //insert money argv 2
     display_Selections();
-    printf("Please select an Option\n");
-    scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
-
+  //  printf("Please select an Option\n");
+  //  scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
+    option = atoi(argv[3]);
+    //printf("OPTION IS %d", option);
     switch(option)
     {
       case 1: money = calculateChange(money, option);
@@ -156,7 +158,7 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-      printf("\nThanks, dispensing item. Please collect it below. You still have $%.2f. \n", change);
+      printf("\nThanks, dispensing item. Please collect it below. Please collect your change $%.2f. \n", change);
     }
     else
     {
@@ -181,25 +183,28 @@ void addOptions()
 float commandLineAddMoney(char* currencyType, char* currencyAmount)
 {
   float money = 0;
-  int pennies, nickels, dimes, quarters;
+  int pennies, nickels, dimes, quarters = 0;
+  printf("MONEY IS ASDSADAD %f", money);
   if(strcmp(currencyType, "quarters") == 0)
   {
-    quarters = *currencyAmount - 48;//sub 0 to get from char to int
+    quarters = atoi(currencyAmount);
+    printf("QUARTERS %d", quarters);
   }
   else if(strcmp(currencyType, "nickels") == 0)
   {
-    nickels = *currencyAmount - 48;
+    nickels = atoi(currencyAmount);
   }
   else if(strcmp(currencyType, "dimes") == 0)
   {
-    dimes = *currencyAmount - 48;
+    dimes = atoi(currencyAmount);
   }
   else if(strcmp(currencyType, "pennies") == 0)
   {
-    pennies = *currencyAmount - 48;
+    pennies = atoi(currencyAmount);
   }
 
-  money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25;
-
+  money = quarters*0.25;
+  //money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25; <- threw error because pennies / other things were missing
+//  printf("MONEY IS %f", money);
   return money;
 }
