@@ -20,7 +20,12 @@ float commandLineAddMoney(char* currencyType, char* currencyAmount);
 int main(int argc, char *argv[]){
   //-s stock
   //-h help
+  printf("Welcome to the Vending Machine!\n\n");
+
   char help[] = "-h", stock[] = "-s", quarters[] = "-q", dimes[] = "-d", nickels[] = "-n", pennies[] = "-p";
+  int initial = 0;
+  int option = 0;
+  float money = 0;
 
   if(strcmp(argv[1], help) == 0)
   {
@@ -34,29 +39,6 @@ int main(int argc, char *argv[]){
   else if(strcmp(argv[1], quarters) == 0)
   {
     commandLineAddMoney(quarters, argv[2]); //insert money argv 2
-  }
-
-  int initial = 0;
-  int option = 0;
-  float money = 0;
-  printf("Welcome to the Vending Machine!\n\n");
-  //print if want to make purchase or add item to the thing
-  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
-    //if make purchase, proceed as normal with insert money method
-  scanf("%d", &initial);
-  if(initial == 2)
-  {
-    addOptions();
-  }
-  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
-  //insert money now
-  printf("Please insert your money.\n");
-  money = insert_Money();
-
-  printf("You inserted: $%.2f \n", money);
-
-  while(option!=6 && money > 0) {
-
     display_Selections();
     printf("Please select an Option\n");
     scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
@@ -82,18 +64,22 @@ int main(int argc, char *argv[]){
       default : printf("Please select a valid option\n");
                 break;
     }
-
-    if (money == 0)
-    {
-        option = 6;
-        printf("\nYou have no money in the machine!\n");
-        printf("\nThanks, have a great day!\n");
-    }
-    else if (money > 0 && option == 6)
-    {
-      printf("\nPlease take your change! $%.2f.Have a Great Day!\n", money);
-    }
   }
+/*
+printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
+    //if make purchase, proceed as normal with insert money method
+  scanf("%d", &initial);
+  if(initial == 2)
+  {
+    addOptions();
+  }
+  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
+  //insert money now
+  printf("Please insert your money.\n");
+  money = insert_Money();
+
+  printf("You inserted: $%.2f \n", money);
+*/
   return 0;
 }
 
@@ -196,6 +182,7 @@ float commandLineAddMoney(char* currencyType, char* currencyAmount)
 {
   float money = 0;
   int pennies, nickels, dimes, quarters;
+  quarters = *currencyAmount - 48; //sub 0 to get from char to int
   money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25;
 
   return money;
