@@ -16,14 +16,12 @@ void display_Selections();
 float calculateChange(float money, int option);
 void addOptions();
 float commandLineAddMoney(char* currencyType, char* currencyAmount);
-int quarters = 0;
+
+
 int main(int argc, char *argv[]){
   //-s stock
   //-h help
   printf("Welcome to the Vending Machine!\n\n");
-
-  printf("Quarters?\n");
-  scanf("%d", &quarters);
 
   char help[] = "-h", stock[] = "-s", quarters[] = "-q", dimes[] = "-d", nickels[] = "-n", pennies[] = "-p";
   int initial = 0;
@@ -187,11 +185,9 @@ float commandLineAddMoney(char* currencyType, char* currencyAmount)
 {
   float money = 0;
   int pennies, nickels, dimes, quarters = 0;
-  printf("MONEY IS ASDSADAD %f", money);
   if(strcmp(currencyType, "quarters") == 0)
   {
     quarters = atoi(currencyAmount);
-    printf("QUARTERS %d", quarters);
   }
   else if(strcmp(currencyType, "nickels") == 0)
   {
