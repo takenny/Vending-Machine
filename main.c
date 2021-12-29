@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 //using struct to store items and to display items.
 struct item
@@ -14,36 +15,37 @@ float insert_Money();
 void display_Selections();
 float calculateChange(float money, int option);
 void addOptions();
+float commandLineAddMoney(char* currencyType, char* currencyAmount);
 
-int main(){
-  //variables for use
+
+int main(int argc, char *argv[]){
+  //-s stock
+  //-h help
+  printf("Welcome to the Vending Machine!\n\n");
+
+  char help[] = "-h", stock[] = "-s", quarters[] = "-q", dimes[] = "-d", nickels[] = "-n", pennies[] = "-p";
   int initial = 0;
   int option = 0;
   float money = 0;
 
-
-  printf("Welcome to the Vending Machine!\n\n");
-  //print if want to make purchase or add item to the thing
-  printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
-    //if make purchase, proceed as normal with insert money method
-  scanf("%d", &initial);
-  if(initial == 2)
+  if(strcmp(argv[1], help) == 0)
   {
-    addOptions();
+    printf("This is the help menu \n");
+    printf("-s shows what item you want to display\n");
+    printf("-q indicates quarters and the number after -q indicates how many quarters you inputted\n");
   }
-  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
-  //insert money now
-  printf("Please insert your money.\n");
-  money = insert_Money();
-
-  printf("You inserted: $%.2f \n", money);
-
-  while(option!=6 && money > 0) {
-
+  else if(strcmp(argv[1], stock) == 0)
+  {
     display_Selections();
-    printf("Please select an Option\n");
-    scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
-
+  }
+  else if(strcmp(argv[1], quarters) == 0)
+  {
+    money = commandLineAddMoney("quarters", argv[2]); //insert money argv 2
+    display_Selections();
+  //  printf("Please select an Option\n");
+  //  scanf("%d", &option); //check if broken then need to fix ?? when insert oiption  = yes?
+    option = atoi(argv[3]);
+    //printf("OPTION IS %d", option);
     switch(option)
     {
       case 1: money = calculateChange(money, option);
@@ -65,19 +67,22 @@ int main(){
       default : printf("Please select a valid option\n");
                 break;
     }
-
-    if (money == 0)
-    {
-        printf("\nYou have no money in the machine!\n");
-        option = 6;
-    }
-    else if (money > 0 && option == 6)
-    {
-      printf("\nPlease take your change! $%.2f.Have a Great Day!\n", money);
-    }
   }
+/*
+printf("Would you like to make a purchase or add an item to the machine? Press 1 for making a purchase, 2 for adding an item.\n");
+    //if make purchase, proceed as normal with insert money method
+  scanf("%d", &initial);
+  if(initial == 2)
+  {
+    addOptions();
+  }
+  //if add item, then ask user what item and how much the item is to add. <- these things might need to add to uml
+  //insert money now
+  printf("Please insert your money.\n");
+  money = insert_Money();
 
-  printf("\nThanks, have a great day!\n");
+  printf("You inserted: $%.2f \n", money);
+*/
   return 0;
 }
 
@@ -154,7 +159,7 @@ float calculateChange(float money, int option)
     }
     if(change >= 0)
     {
-      printf("\nThanks, dispensing item. Please collect it below. You still have $%.2f. \n", change);
+      printf("\nThanks, dispensing item. Please collect it below. Please collect your change $%.2f. \n", change);
     }
     else
     {
@@ -174,4 +179,31 @@ void addOptions()
   printf("\nWhat is the name of the item you want to add?");
 
   printf("\nHow much is this item?");
+}
+
+float commandLineAddMoney(char* currencyType, char* currencyAmount)
+{
+  float money = 0;
+  int pennies, nickels, dimes, quarters = 0;
+  if(strcmp(currencyType, "quarters") == 0)
+  {
+    quarters = atoi(currencyAmount);
+  }
+  else if(strcmp(currencyType, "nickels") == 0)
+  {
+    nickels = atoi(currencyAmount);
+  }
+  else if(strcmp(currencyType, "dimes") == 0)
+  {
+    dimes = atoi(currencyAmount);
+  }
+  else if(strcmp(currencyType, "pennies") == 0)
+  {
+    pennies = atoi(currencyAmount);
+  }
+
+  money = quarters*0.25;
+  //money = pennies*0.01 + nickels*0.05 + dimes*0.10 + quarters*0.25; <- threw error because pennies / other things were missing
+//  printf("MONEY IS %f", money);
+  return money;
 }
