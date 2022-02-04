@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    QString program = "../Tester_QProcess/a.exe";
+    QString program = "../Vending-Machine/Tester_QProcess/a.exe";
 
     QStringList arguments;
    // arguments << "-h" ;
